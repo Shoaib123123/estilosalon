@@ -1,0 +1,15 @@
+.superuser-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffffff, #000000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.superuser-card {
+  background: white;
+  padding: 30px;
+  width: 100%;
+  max-width: 380px;
+  border-radius: 12px;
+}

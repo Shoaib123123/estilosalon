@@ -1,0 +1,12 @@
+.footer {
+  width: 100%;
+  background: linear-gradient(90deg, #1a1a1a, #333333);
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+}
+
+/* WhatsApp button styling override if needed */
+.footer .btn-success {
+  background-color: #25d366;
+  border-color: #25d366;
+  font-weight: bold;
+}

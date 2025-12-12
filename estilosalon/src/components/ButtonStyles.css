@@ -1,0 +1,26 @@
+.btn-gold {
+  background-color: #FFD700 !important; /* Gold */
+  color: #000 !important;
+  border: 1px solid #e6c200 !important;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  border-radius: 50px; /* rounded pill shape */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* subtle shadow */
+}
+
+/* Hover Effect - Zoom + Slight Glow */
+.btn-gold:hover {
+  background-color: #e6c200 !important; /* Darker gold */
+  color: #fff !important;
+  transform: scale(1.05); /* slightly bigger */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3); /* stronger shadow */
+}
+
+/* Click / Active Effect */
+.btn-gold:active {
+  background-color: #d4af00 !important; /* deeper gold */
+  transform: scale(0.95); /* slightly smaller on click */
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2); /* pressed shadow */
+}

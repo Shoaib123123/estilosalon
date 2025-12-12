@@ -1,0 +1,36 @@
+/* ============================
+   CARD ANIMATION
+============================ */
+.pricing-card {
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.pricing-card:hover {
+  transform: scale(1.05);
+}
+
+.pricing-card:active {
+  transform: scale(1.08);
+}
+
+/* ============================
+   BUTTON CLICK COLOR CHANGE
+============================ */
+.book-btn {
+  transition: all 0.3s ease-in-out;
+}
+
+.book-btn:active {
+  background-color: #198754 !important; /* Bootstrap success green */
+  border-color: #198754 !important;
+  transform: scale(0.95);
+}
+
+/* pricing bg*/
+.pricing-bg {
+  min-height: 100vh;
+  width: 100vh;
+  background: linear-gradient(190deg, #ffffff, #1e1e20);
+  
+}
