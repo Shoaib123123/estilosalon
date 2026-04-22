@@ -1,11 +1,13 @@
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Container, Row, Col, Button } from "react-bootstrap";
-import owner from "./images/owner.jpg"; // ✅ CORRECT way to import image
+import { motion } from "framer-motion";
+import owner from "./images/owner.jpg";
 
 function Owner() {
-    const now1 = 98;
-    const now2 = 95;
-    const now3 = 99;
+  const now1 = 98;
+  const now2 = 95;
+  const now3 = 99;
+
   return (
     <section className="p-5 mb-5 bg-light">
       <Container>
@@ -13,44 +15,117 @@ function Owner() {
 
           {/* ✅ Left Side - Owner Image */}
           <Col md={6} className="text-center mb-4 mb-md-0">
-            <img
+            <motion.img
               src={owner}
               alt="Salon Owner"
               className="img-fluid rounded shadow"
               style={{ maxHeight: "420px", objectFit: "cover" }}
-
+              
+              initial={{ opacity: 0, x: -100, scale: 0.9 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
             />
-            <h2>~OWNER~</h2>
-            <h5 className="text-muted">zafar salmani</h5>
+
+            <motion.h2
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              ~OWNER~
+            </motion.h2>
+
+            <motion.h5
+              className="text-muted"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              zafar salmani
+            </motion.h5>
           </Col>
 
           {/* ✅ Right Side - Owner Experience */}
           <Col md={6}>
-            <h2 className="fw-bold mb-3">Meet Our Salon Owner</h2>
-            <h5 className="text-success mb-3">15+ Years of Professional Experience</h5>
+            <motion.h2
+              className="fw-bold mb-3"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              Meet Our Salon Owner
+            </motion.h2>
 
-            <p className="text-muted">
+            <motion.h5
+              className="text-success mb-3"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              15+ Years of Professional Experience
+            </motion.h5>
+
+            <motion.p
+              className="text-muted"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
               Our salon is led by a highly experienced professional who has
               mastered modern hair cutting, beard styling, and grooming
               techniques with excellence.
-            </p>
+            </motion.p>
 
-            <p className="text-muted">
+            <motion.p
+              className="text-muted"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
               With premium products and personalized service, we ensure every
               client leaves looking confident and refreshed.
-            </p>
-            <p className="text-muted">
-                <h2>Hair cutting accuracy</h2>
-                <ProgressBar now={now1} label={`${now1}%`} />;
-                <h2>Client satisfaction</h2>
-                <ProgressBar now={now2} label={`${now2}%`} />;
-                <h2>Customer Trust</h2>
-                <ProgressBar now={now3} label={`${now3}%`} />;
-            </p>
+            </motion.p>
 
-            <Button variant="dark" href="/Services" className="mt-2">
-               Available Services
-            </Button>
+            {/* ✅ Animated Progress Bars */}
+            <div>
+              <h6>Hair cutting accuracy</h6>
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: "100%" }}
+                transition={{ duration: 1 }}
+              >
+                <ProgressBar now={now1} label={`${now1}%`} />
+              </motion.div>
+
+              <h6 className="mt-3">Client satisfaction</h6>
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: "100%" }}
+                transition={{ duration: 1.2 }}
+              >
+                <ProgressBar now={now2} label={`${now2}%`} />
+              </motion.div>
+
+              <h6 className="mt-3">Customer Trust</h6>
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: "100%" }}
+                transition={{ duration: 1.4 }}
+              >
+                <ProgressBar now={now3} label={`${now3}%`} />
+              </motion.div>
+            </div>
+
+            {/* ✅ Animated Button */}
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button variant="dark" href="/Services" className="mt-3">
+                Available Services
+              </Button>
+            </motion.div>
+
           </Col>
 
         </Row>

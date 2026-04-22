@@ -1,21 +1,19 @@
 import logo from "./images/logo.jpeg";
 import { Button } from "react-bootstrap";
-import "./ButtonStyles.css";
-
-
+import "./Navbar.css";
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav className="navbar navbar-expand-lg fixed-top custom-navbar">
       <div className="container">
-        <a className="navbar-brand d-flex align-items-center" href="/Body">
+        <a className="navbar-brand d-flex  align-items-center" href="/Body">
           <img
             src={logo}
             alt="Estilo Salon Logo"
             height="40"
             className="me-2"
           />
-          <span className="fw-bold text-white">Estilo Salon</span>
+          <span className="fw-bold brand-text">Estilo Salon</span>
         </a>
 
         <button
@@ -28,42 +26,33 @@ function Navbar() {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <a className="nav-link active" href="/Body">Home</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link active" href="/Services">Services</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link active" href="/Pricing">Pricing</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link active" href="/Contact">Contact</a>
-            </li>
-            <li className="nav-item me-5">
-              <a className="nav-link active" href="/About">About</a>
-            </li>
-            <li className="nav-item ">
-              <Button className="btn btn-gold shadow" href="/BookAppointment">
+          <ul className="navbar-nav ms-auto align-items-center gap-2">
+            
+            {["Home", "Services", "Pricing", "Contact", "About"].map((item, index) => (
+              <li className="nav-item" key={index}>
+                <a className="nav-link fw-2 nav-box" href={`/${item === "Home" ? "Body" : item}`}>
+                  {item}
+                </a>
+              </li>
+            ))}
+
+            <li className="nav-item ms-2">
+              <Button className="btn btn-gold shadow nav-btn" href="/BookAppointment">
                 Book Appointment
               </Button>
             </li>
-            <li className="nav-item  ms-2 ">
-              <Button className="btn btn-danger shadow" href="/Superuser">
+
+            <li className="nav-item ms-2">
+              <Button className="btn btn-danger shadow nav-btn" href="/Superuser">
                 Super User
               </Button>
             </li>
+
           </ul>
         </div>
       </div>
     </nav>
   );
 }
-
-
-
-
-
 
 export default Navbar;

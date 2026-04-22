@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 function BookAppointment() {
   const [formData, setFormData] = useState({
@@ -19,21 +20,16 @@ function BookAppointment() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // ✅ Safely get old bookings from localStorage
     let oldBookings = JSON.parse(localStorage.getItem("bookingData"));
     if (!Array.isArray(oldBookings)) {
       oldBookings = oldBookings ? [oldBookings] : [];
     }
 
-    // ✅ Add new booking on top
     const updatedBookings = [formData, ...oldBookings];
-
-    // ✅ Save updated bookings to localStorage
     localStorage.setItem("bookingData", JSON.stringify(updatedBookings));
 
     alert("Appointment Booked Successfully!");
 
-    // ✅ Clear form after submission
     setFormData({
       name: "",
       contact: "",
@@ -46,14 +42,49 @@ function BookAppointment() {
     });
   };
 
+  // 🔥 Container animation (stagger)
+  const container = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  // 🔥 Field animation
+  const field = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
     <div className="container mt-5 pt-5 mb-5 pb-5">
-      <div className="card p-4 shadow">
-        <h3 className="text-center mb-4">Book Appointment</h3>
+      <motion.div
+        className="card p-4 shadow"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+      >
 
-        <form onSubmit={handleSubmit}>
+        {/* Title */}
+        <motion.h3
+          className="text-center mb-4"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          Book Appointment
+        </motion.h3>
+
+        <motion.form
+          onSubmit={handleSubmit}
+          variants={container}
+          initial="hidden"
+          animate="visible"
+        >
+
           {/* Name */}
-          <div className="mb-3">
+          <motion.div variants={field} className="mb-3">
             <label>Name *</label>
             <input
               type="text"
@@ -63,10 +94,10 @@ function BookAppointment() {
               onChange={handleChange}
               value={formData.name}
             />
-          </div>
+          </motion.div>
 
           {/* Contact */}
-          <div className="mb-3">
+          <motion.div variants={field} className="mb-3">
             <label>Contact *</label>
             <input
               type="tel"
@@ -76,10 +107,10 @@ function BookAppointment() {
               onChange={handleChange}
               value={formData.contact}
             />
-          </div>
+          </motion.div>
 
           {/* Location */}
-          <div className="mb-3">
+          <motion.div variants={field} className="mb-3">
             <label>Location *</label>
             <input
               type="text"
@@ -89,10 +120,10 @@ function BookAppointment() {
               onChange={handleChange}
               value={formData.location}
             />
-          </div>
+          </motion.div>
 
           {/* Gender */}
-          <div className="mb-3">
+          <motion.div variants={field} className="mb-3">
             <label>Gender *</label>
             <select
               className="form-select"
@@ -105,10 +136,10 @@ function BookAppointment() {
               <option>Male</option>
               <option>Female</option>
             </select>
-          </div>
+          </motion.div>
 
-          {/* Service Type */}
-          <div className="mb-3">
+          {/* Service */}
+          <motion.div variants={field} className="mb-3">
             <label>Service Type *</label>
             <select
               className="form-select"
@@ -125,10 +156,10 @@ function BookAppointment() {
               <option>Bridal Grooming</option>
               <option>Premium Package</option>
             </select>
-          </div>
+          </motion.div>
 
           {/* Date */}
-          <div className="mb-3">
+          <motion.div variants={field} className="mb-3">
             <label>Preferred Date *</label>
             <input
               type="date"
@@ -138,10 +169,10 @@ function BookAppointment() {
               onChange={handleChange}
               value={formData.date}
             />
-          </div>
+          </motion.div>
 
           {/* Time */}
-          <div className="mb-3">
+          <motion.div variants={field} className="mb-3">
             <label>Preferred Time *</label>
             <div className="d-flex gap-2">
               <input
@@ -162,14 +193,21 @@ function BookAppointment() {
                 <option>PM</option>
               </select>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Submit Button */}
-          <button type="submit" className="btn btn-dark w-100">
+          {/* Button */}
+          <motion.button
+            type="submit"
+            className="btn btn-dark w-100"
+            variants={field}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             Book Appointment
-          </button>
-        </form>
-      </div>
+          </motion.button>
+
+        </motion.form>
+      </motion.div>
     </div>
   );
 }

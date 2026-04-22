@@ -1,0 +1,40 @@
+/* 🔥 Default transparent navbar */
+.navbar-top {
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+/* 🔥 On scroll effect */
+.navbar-scrolled {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 10px 0;
+  transition: all 0.3s ease;
+}
+
+/* 🔥 Link underline animation */
+.nav-animated {
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-animated::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #b6a96e;
+  transition: width 0.3s ease;
+}
+
+.nav-animated:hover::after {
+  width: 100%;
+}
+
+/* 🔥 Optional glow on hover */
+.navbar .btn:hover {
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+

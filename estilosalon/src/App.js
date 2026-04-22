@@ -59,7 +59,7 @@ function App() {
           }
         />
       </Routes>
-          <Owner/>
+          
       <Footer />
     </>
   );
