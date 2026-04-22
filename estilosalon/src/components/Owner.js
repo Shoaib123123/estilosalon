@@ -1,4 +1,3 @@
-import React, { Profiler } from "react";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Container, Row, Col, Button } from "react-bootstrap";
 import owner from "./images/owner.jpg"; // ✅ CORRECT way to import image

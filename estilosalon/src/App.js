@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/navbar";
 import CarouselFadeExample from "./components/CarouselFadeExample";
@@ -51,15 +51,15 @@ function App() {
         <Route path="/Superuser" element={<Superuser />} />
 
         <Route
-          path="/dashboard"
+          path="/Dashboard"
           element={
             <ProtectedRoute>
-              <Dashboard />
+              <Dashboard/>
             </ProtectedRoute>
           }
         />
       </Routes>
-
+          <Owner/>
       <Footer />
     </>
   );
